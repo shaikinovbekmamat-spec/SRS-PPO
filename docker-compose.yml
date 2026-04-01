@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:15
+    container_name: pos_db
+    environment:
+      POSTGRES_DB: pos
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pos_db_data:/var/lib/postgresql/data
+
+volumes:
+  pos_db_data:
+

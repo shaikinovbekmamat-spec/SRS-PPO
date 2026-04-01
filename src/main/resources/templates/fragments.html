@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+<nav th:fragment="navbar(active)" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/dashboard}">POS Automation</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsExample">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" th:classappend="${active}=='dashboard' ? ' active' : ''" th:href="@{/dashboard}">Дашборд</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:classappend="${active}=='transactions' ? ' active' : ''" th:href="@{/transactions}">Транзакции</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:classappend="${active}=='postings' ? ' active' : ''" th:href="@{/postings}">Проводки</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:classappend="${active}=='reports' ? ' active' : ''" th:href="@{/reports?preset=today}">Отчёты</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:classappend="${active}=='terminals' ? ' active' : ''" th:href="@{/terminals}">Терминалы</a>
+                </li>
+            </ul>
+            <form th:action="@{/logout}" method="post" class="d-flex">
+                <button class="btn btn-outline-light btn-sm" type="submit">Выйти</button>
+            </form>
+        </div>
+    </div>
+</nav>
+</body>
+</html>
+
