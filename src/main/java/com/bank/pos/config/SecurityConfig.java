@@ -22,6 +22,7 @@ public class SecurityConfig {
                         .requestMatchers("/v1/transactions/**").permitAll()
                         .requestMatchers("/terminals", "/terminals/").hasAnyRole("ADMIN", "ACCOUNTANT")
                         .requestMatchers("/terminals/**").hasRole("ADMIN")
+                        .requestMatchers("/exchange-rates/**").hasRole("ADMIN")
                         .anyRequest().hasAnyRole("ADMIN", "ACCOUNTANT")
                 )
                 .formLogin(Customizer.withDefaults())
@@ -44,4 +45,3 @@ public class SecurityConfig {
         return new InMemoryUserDetailsManager(admin, accountant);
     }
 }
-
